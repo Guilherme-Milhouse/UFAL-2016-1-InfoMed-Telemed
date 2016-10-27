@@ -1,0 +1,16 @@
+run("Set Measurements...", "area mean standard perimeter skewness kurtosis area_fraction redirect=None decimal=3");
+
+function action(input, output, filename) {
+        open(input + filename);
+		run("Measure");
+        close();
+}
+
+input = "/home/milhouse/telemedicina/fiji/images/";
+output = "/home/milhouse/telemedicina/fiji/";
+
+setBatchMode(true); 
+list = getFileList(input);
+for (i = 0; i < list.length; i++)
+        action(input, output, list[i]);
+setBatchMode(false);
